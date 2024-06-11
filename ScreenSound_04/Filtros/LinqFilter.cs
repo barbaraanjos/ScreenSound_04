@@ -1,4 +1,6 @@
 ﻿using ScreenSound_04.Modelos;
+using System.Net.NetworkInformation;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ScreenSound_04.Filtros;
 
@@ -41,6 +43,17 @@ internal class LinqFilter
 		Console.WriteLine($"Exibindo as músicas lançadas em {ano}");
 
 		foreach (var musica in anoDaMusica)
+		{
+			Console.WriteLine($"- Música: {musica.Nome}, Intérprete: {musica.Artista}");
+		}
+	}
+
+	public static void FiltrarMusicasTonalidadeCSharp(List<Musica> musicas)
+	{
+		var tonalidadeDaMusica = musicas.Where(musica => musica.Tonalidade!.Equals("C#")).ToList();
+		Console.WriteLine($"Exibindo as músicas com tonalidade C#");
+
+		foreach (var musica in tonalidadeDaMusica)
 		{
 			Console.WriteLine($"- Música: {musica.Nome}, Intérprete: {musica.Artista}");
 		}
